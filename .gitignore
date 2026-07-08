@@ -1,0 +1,22 @@
+# Binaries
+/lsmkv
+/bin/
+/dist/
+
+# Test/coverage artifacts
+*.out
+*.prof
+coverage.txt
+
+# Editor/OS files
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Local environment
+.env
+.env.local
+*.log
