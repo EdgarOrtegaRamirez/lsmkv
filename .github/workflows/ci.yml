@@ -25,8 +25,9 @@ jobs:
 
       - name: Verify module is dependency-free
         run: |
-          if [ -n "$(go mod edit -json | jq -r '.Require // [] | length')" ]; then
-            echo "go.mod must have no require directives" && exit 1
+          deps=$(go list -m all 2>/dev/null | grep -v "github.com/EdgarOrtegaRamirez/lsmkv$" | wc -l)
+          if [ "$deps" -gt 0 ]; then
+            echo "go.mod must have no require directives (found $deps)" && exit 1
           fi
 
       - name: Build
