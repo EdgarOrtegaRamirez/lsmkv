@@ -49,12 +49,12 @@ type node struct {
 // SkipList is a concurrent-safe skip list keyed by (key, seq) so that newer
 // writes shadow older ones during iteration.
 type SkipList struct {
-	mu     sync.RWMutex
-	head   *node
-	level  int
-	count  int
-	bytes  int // approximate memory footprint
-	rng    *rand.Rand
+	mu    sync.RWMutex
+	head  *node
+	level int
+	count int
+	bytes int // approximate memory footprint
+	rng   *rand.Rand
 }
 
 // New returns an empty skip list.

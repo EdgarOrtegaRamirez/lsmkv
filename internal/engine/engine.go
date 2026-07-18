@@ -39,8 +39,8 @@ import (
 // Default tuning constants.
 const (
 	defaultMemtableSize = 4 * 1024 * 1024 // 4 MiB
-	defaultMaxTables    = 8              // trigger partial compaction at this count
-	defaultMergeFactor  = 4              // tables merged per partial compaction
+	defaultMaxTables    = 8               // trigger partial compaction at this count
+	defaultMergeFactor  = 4               // tables merged per partial compaction
 	defaultBloomFP      = 0.01
 )
 
@@ -73,20 +73,20 @@ func DefaultOptions() Options {
 
 // Engine is a log-structured merge-tree key-value store.
 type Engine struct {
-	dir string
+	dir  string
 	opts Options
 	mu   sync.Mutex
 
 	memtable *skiplist.SkipList
 	immu     *skiplist.SkipList // immutable memtable being flushed (nil if none)
 
-	wal   *wal.Writer
-	walN  int // active WAL generation number
+	wal  *wal.Writer
+	walN int // active WAL generation number
 
-	tables      []*sstable.Reader // sorted newest-first (highest number first)
-	nextTableN  int
-	nextWalN    int
-	seq         uint64
+	tables     []*sstable.Reader // sorted newest-first (highest number first)
+	nextTableN int
+	nextWalN   int
+	seq        uint64
 
 	closed bool
 }

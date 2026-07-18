@@ -426,13 +426,13 @@ func (r *Reader) readBlock(i int) ([]byte, error) {
 // Iterator yields records in ascending key order. For keys with multiple
 // versions the newest sequence number is visited first.
 type Iterator struct {
-	r       *Reader
+	r        *Reader
 	blockIdx int
-	block   []byte
-	off     int
-	cur     coding.Record
+	block    []byte
+	off      int
+	cur      coding.Record
 	valid    bool
-	err     error
+	err      error
 	started  bool
 	startKey []byte
 }
